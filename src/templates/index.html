@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impact Sentinel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <p class="eyebrow">Public workstation</p>
+        <h1>Impact Sentinel</h1>
+        <p class="lede">
+            Monitoring current and future asteroid impact zones for geologists
+            and aeroscientists.
+        </p>
+    </header>
+
+    <main>
+        <form method="post" action="/">
+            <label for="user_input">Enter your input</label>
+            <div class="row">
+                <input
+                    type="text"
+                    id="user_input"
+                    name="user_input"
+                    placeholder="Type something and submit"
+                    autocomplete="off"
+                >
+                <button type="submit">Submit!</button>
+            </div>
+        </form>
+
+        {% if submitted_text is not none %}
+        <section class="result" aria-live="polite">
+            <h2>You submitted</h2>
+            <p>{{ submitted_text }}</p>
+        </section>
+        {% endif %}
+    </main>
+</body>
+</html>

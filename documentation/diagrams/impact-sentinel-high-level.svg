@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1180" viewBox="0 0 1920 1180">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3D4F61"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1F8A7A"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2C6EAA"/>
+    </marker>
+    <filter id="cardShadow" x="-8%" y="-8%" width="116%" height="124%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A2332" flood-opacity="0.10"/>
+    </filter>
+    <style>
+      .layer { font-family: "Noto Sans"; font-size: 13px; font-weight: 700; letter-spacing: 1.4px; fill: #7A8794; }
+    </style>
+  </defs>
+
+  <rect width="1920" height="1180" fill="#F5F7FA"/>
+  <rect x="0" y="0" width="12" height="1180" fill="#1A2332"/>
+
+  <!-- Header -->
+  <text x="96" y="58" text-anchor="start" font-family="Noto Sans" font-size="34" font-weight="700" fill="#1A2332">Impact Sentinel</text>
+  <text x="96" y="92" text-anchor="start" font-family="Noto Sans" font-size="18" font-weight="500" fill="#5C6B7A">High-level architecture  ·  Current and future asteroid impact zones</text>
+  <text x="1824" y="58" text-anchor="end" font-family="Noto Sans" font-size="16" font-weight="600" fill="#5C6B7A">Big-data pipeline</text>
+  <text x="1824" y="86" text-anchor="end" font-family="Noto Sans" font-size="15" font-weight="500" fill="#3D4F61">ingest  →  events  →  analyze  →  persist  →  serve</text>
+  <line x1="96" y1="112" x2="1824" y2="112" stroke="#D5DCE3" stroke-width="2"/>
+
+  <!-- Layer labels -->
+  <text class="layer" x="40" y="188" transform="rotate(-90 40 188)" text-anchor="middle">USERS</text>
+  <text class="layer" x="40" y="330" transform="rotate(-90 40 330)" text-anchor="middle">PRESENTATION</text>
+  <text class="layer" x="40" y="520" transform="rotate(-90 40 520)" text-anchor="middle">PIPELINE</text>
+  <text class="layer" x="40" y="710" transform="rotate(-90 40 710)" text-anchor="middle">PERSISTENCE</text>
+  <text class="layer" x="40" y="850" transform="rotate(-90 40 850)" text-anchor="middle">SOURCES</text>
+
+  <!-- USERS -->
+  <g filter="url(#cardShadow)">
+    <rect x="430" y="140" width="340" height="86" rx="16" fill="#FFFFFF" stroke="#3D4F61" stroke-width="2.5"/>
+    <rect x="1150" y="140" width="340" height="86" rx="16" fill="#FFFFFF" stroke="#3D4F61" stroke-width="2.5"/>
+  </g>
+  <text x="600" y="178" text-anchor="middle" font-family="Noto Sans" font-size="22" font-weight="700" fill="#1A2332">Geologist</text>
+  <text x="600" y="204" text-anchor="middle" font-family="Noto Sans" font-size="14" font-weight="500" fill="#5C6B7A">Ground effects, energy, location</text>
+  <text x="1320" y="178" text-anchor="middle" font-family="Noto Sans" font-size="22" font-weight="700" fill="#1A2332">Aeroscientist</text>
+  <text x="1320" y="204" text-anchor="middle" font-family="Noto Sans" font-size="14" font-weight="500" fill="#5C6B7A">Probability, dates, risk scales</text>
+
+  <!-- arrows users to web -->
+  <line x1="600" y1="226" x2="600" y2="268" stroke="#3D4F61" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1320" y1="226" x2="1320" y2="268" stroke="#3D4F61" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="960" y="258" text-anchor="middle" font-family="Noto Sans" font-size="13" font-weight="600" fill="#7A8794">uses  ·  filter form and reports</text>
+
+  <!-- WEB -->
+  <g filter="url(#cardShadow)">
+    <rect x="360" y="272" width="1200" height="118" rx="18" fill="#E8F1FA" stroke="#2C6EAA" stroke-width="3"/>
+  </g>
+  <text x="960" y="318" text-anchor="middle" font-family="Noto Sans" font-size="24" font-weight="700" fill="#1A3A5C">Web application</text>
+  <text x="960" y="348" text-anchor="middle" font-family="Noto Sans" font-size="15" font-weight="600" fill="#2C6EAA">Ktor  ·  FreeMarker  ·  basic-server :8888</text>
+  <text x="960" y="372" text-anchor="middle" font-family="Noto Sans" font-size="15" font-weight="500" fill="#1A2332">Filter form  ·  Tabular report  ·  Summary dashboard  ·  Object detail  ·  Query REST API</text>
+
+  <!-- PIPELINE -->
+  <g filter="url(#cardShadow)">
+    <rect x="160" y="436" width="460" height="168" rx="18" fill="#E4F4EF" stroke="#1F8A7A" stroke-width="3"/>
+    <rect x="730" y="436" width="460" height="168" rx="18" fill="#FBEFE4" stroke="#C45C26" stroke-width="3"/>
+    <rect x="1300" y="436" width="460" height="168" rx="18" fill="#EEE8F8" stroke="#5B4B8A" stroke-width="3"/>
+  </g>
+  <text x="390" y="478" text-anchor="middle" font-family="Noto Sans" font-size="22" font-weight="700" fill="#145C52">Data collector</text>
+  <text x="390" y="506" text-anchor="middle" font-family="Noto Sans" font-size="15" font-weight="600" fill="#1F8A7A">Web scraper  ·  :8886</text>
+  <text x="390" y="536" text-anchor="middle" font-family="Noto Sans" font-size="14" font-weight="500" fill="#1A2332">Scheduled fetch of public catalogs</text>
+  <text x="390" y="558" text-anchor="middle" font-family="Noto Sans" font-size="14" font-weight="500" fill="#1A2332">Persists raw payloads</text>
+  <text x="390" y="580" text-anchor="middle" font-family="Noto Sans" font-size="14" font-weight="500" fill="#1A2332">Publishes collection.completed</text>
+
+  <text x="960" y="478" text-anchor="middle" font-family="Noto Sans" font-size="22" font-weight="700" fill="#8A3B12">Message broker</text>
+  <text x="960" y="506" text-anchor="middle" font-family="Noto Sans" font-size="15" font-weight="600" fill="#C45C26">Event collaboration</text>
+  <text x="960" y="536" text-anchor="middle" font-family="Noto Sans" font-size="14" font-weight="500" fill="#1A2332">collection.completed</text>
+  <text x="960" y="558" text-anchor="middle" font-family="Noto Sans" font-size="14" font-weight="500" fill="#1A2332">analysis.completed</text>
+  <text x="960" y="580" text-anchor="middle" font-family="Noto Sans" font-size="14" font-weight="500" fill="#1A2332">At-least-once  ·  idempotent consumers</text>
+
+  <text x="1530" y="478" text-anchor="middle" font-family="Noto Sans" font-size="22" font-weight="700" fill="#3D2F64">Data analyzer</text>
+  <text x="1530" y="506" text-anchor="middle" font-family="Noto Sans" font-size="15" font-weight="600" fill="#5B4B8A">Parse and zones  ·  :8887</text>
+  <text x="1530" y="536" text-anchor="middle" font-family="Noto Sans" font-size="14" font-weight="500" fill="#1A2332">Classify current vs future</text>
+  <text x="1530" y="558" text-anchor="middle" font-family="Noto Sans" font-size="14" font-weight="500" fill="#1A2332">Compute honest impact zones</text>
+  <text x="1530" y="580" text-anchor="middle" font-family="Noto Sans" font-size="14" font-weight="500" fill="#1A2332">Upsert serving records</text>
+
+  <!-- arrows collector -> broker -> analyzer -->
+  <line x1="620" y1="520" x2="722" y2="520" stroke="#3D4F61" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="1190" y1="520" x2="1292" y2="520" stroke="#3D4F61" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- collector and analyzer persist to store; broker does not -->
+  <line x1="390" y1="604" x2="390" y2="656" stroke="#3D4F61" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1530" y1="604" x2="1530" y2="656" stroke="#3D4F61" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="318" y="640" text-anchor="middle" font-family="Noto Sans" font-size="13" font-weight="600" fill="#7A8794">raw</text>
+  <text x="1608" y="640" text-anchor="middle" font-family="Noto Sans" font-size="13" font-weight="600" fill="#7A8794">zones</text>
+
+  <!-- STORE -->
+  <g filter="url(#cardShadow)">
+    <rect x="360" y="664" width="1200" height="108" rx="18" fill="#F6F0DC" stroke="#8A7020" stroke-width="3"/>
+  </g>
+  <text x="960" y="706" text-anchor="middle" font-family="Noto Sans" font-size="24" font-weight="700" fill="#5C4A12">Data store</text>
+  <text x="960" y="734" text-anchor="middle" font-family="Noto Sans" font-size="15" font-weight="600" fill="#8A7020">Source of truth  ·  survives restart  ·  any durable store</text>
+  <text x="960" y="756" text-anchor="middle" font-family="Noto Sans" font-size="15" font-weight="500" fill="#1A2332">Raw payloads  ·  Analyzed impact zones  ·  Pipeline metadata (freshness)</text>
+
+  <!-- scrape: sources -> collector (left) -->
+  <path d="M 430 870 C 110 870, 110 520, 158 520" fill="none" stroke="#1F8A7A" stroke-width="2.5" marker-end="url(#arrow-teal)"/>
+  <text x="148" y="700" text-anchor="middle" font-family="Noto Sans" font-size="13" font-weight="700" fill="#1F8A7A">scrape</text>
+
+  <!-- query: store -> web (right); web never scrapes -->
+  <path d="M 1560 718 C 1868 718, 1868 331, 1562 331" fill="none" stroke="#2C6EAA" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <text x="1848" y="520" text-anchor="middle" font-family="Noto Sans" font-size="13" font-weight="700" fill="#2C6EAA">query</text>
+  <text x="1848" y="540" text-anchor="middle" font-family="Noto Sans" font-size="13" font-weight="700" fill="#2C6EAA">REST</text>
+
+  <!-- SOURCES -->
+  <g filter="url(#cardShadow)">
+    <rect x="430" y="820" width="1060" height="100" rx="18" fill="#EEF0F2" stroke="#6A7380" stroke-width="3"/>
+  </g>
+  <text x="960" y="858" text-anchor="middle" font-family="Noto Sans" font-size="20" font-weight="700" fill="#3D4F61">Public CNEOS / JPL catalogs  (external)</text>
+  <text x="960" y="890" text-anchor="middle" font-family="Noto Sans" font-size="15" font-weight="500" fill="#1A2332">Sentry risk table — future impact zones     ·     Fireballs / bolides — current impact zones</text>
+
+  <!-- FOOTER cross-cutting -->
+  <rect x="160" y="960" width="1600" height="164" rx="18" fill="#1A2332"/>
+  <text x="960" y="996" text-anchor="middle" font-family="Noto Sans" font-size="14" font-weight="600" fill="#A8B4C0">Cross-cutting  ·  course rubric</text>
+
+  <rect x="200" y="1014" width="360" height="86" rx="12" fill="#243140" stroke="#3D4F61" stroke-width="1.5"/>
+  <rect x="580" y="1014" width="360" height="86" rx="12" fill="#243140" stroke="#3D4F61" stroke-width="1.5"/>
+  <rect x="960" y="1014" width="360" height="86" rx="12" fill="#243140" stroke="#3D4F61" stroke-width="1.5"/>
+  <rect x="1340" y="1014" width="360" height="86" rx="12" fill="#243140" stroke="#3D4F61" stroke-width="1.5"/>
+
+  <text x="380" y="1048" text-anchor="middle" font-family="Noto Sans" font-size="16" font-weight="700" fill="#FFFFFF">Product environments</text>
+  <text x="380" y="1074" text-anchor="middle" font-family="Noto Sans" font-size="13" font-weight="500" fill="#C5D0DA">Local  ·  CI  ·  Production</text>
+
+  <text x="760" y="1048" text-anchor="middle" font-family="Noto Sans" font-size="16" font-weight="700" fill="#FFFFFF">Tests and doubles</text>
+  <text x="760" y="1074" text-anchor="middle" font-family="Noto Sans" font-size="13" font-weight="500" fill="#C5D0DA">Unit  ·  Integration  ·  Fakes</text>
+
+  <text x="1140" y="1048" text-anchor="middle" font-family="Noto Sans" font-size="16" font-weight="700" fill="#FFFFFF">CI / Continuous delivery</text>
+  <text x="1140" y="1074" text-anchor="middle" font-family="Noto Sans" font-size="13" font-weight="500" fill="#C5D0DA">Build, test, ship three processes</text>
+
+  <text x="1520" y="1048" text-anchor="middle" font-family="Noto Sans" font-size="16" font-weight="700" fill="#FFFFFF">Production monitoring</text>
+  <text x="1520" y="1074" text-anchor="middle" font-family="Noto Sans" font-size="13" font-weight="500" fill="#C5D0DA">JSON logs  ·  metrics  ·  freshness</text>
+</svg>
