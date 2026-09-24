@@ -18,15 +18,21 @@
 
     <main>
         <form method="post" action="/">
-            <label for="user_input">Enter your input</label>
+            <label for="name">Enter your name</label>
             <div class="row">
                 <input
                     type="text"
-                    id="user_input"
-                    name="user_input"
-                    placeholder="Type something and submit"
-                    autocomplete="off"
+                    id="name"
+                    name="name"
+                    placeholder="Type your name and submit"
+                    autocomplete="name"
+                    required
                 >
+                <select id="role" name="role" aria-label="Role">
+                    <option value="">Role (optional)</option>
+                    <option value="Geologist">Geologist</option>
+                    <option value="Aeroscientist">Aeroscientist</option>
+                </select>
                 <button type="submit">Submit!</button>
             </div>
         </form>
@@ -37,6 +43,138 @@
             <p>{{ submitted_text }}</p>
         </section>
         {% endif %}
+
+        <section class="users">
+            <h2>Analyzed catalog</h2>
+            <p class="empty">
+                NASA APIs return raw events. These figures are computed from
+                rows in our database.
+            </p>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Fireballs stored</th>
+                        <td>{{ analysis.fireballs.count }}</td>
+                    </tr>
+                    <tr>
+                        <th>Average fireball energy</th>
+                        <td>
+                            {% if analysis.fireballs.average_impact_energy_kt is not none %}
+                            {{ "%.3f"|format(analysis.fireballs.average_impact_energy_kt) }} kt
+                            {% else %}
+                            —
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Max fireball energy</th>
+                        <td>
+                            {% if analysis.fireballs.max_impact_energy_kt is not none %}
+                            {{ analysis.fireballs.max_impact_energy_kt }} kt
+                            {% else %}
+                            —
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Sentry objects stored</th>
+                        <td>{{ analysis.sentry.count }}</td>
+                    </tr>
+                    <tr>
+                        <th>Highest-probability object</th>
+                        <td>{{ analysis.sentry.highest_risk_designation or "—" }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="empty">
+                Date-range API:
+                <code>/average/&lt;YYYY-MM-DD&gt;/&lt;YYYY-MM-DD&gt;</code>
+                (JSON). Example:
+                <a href="/average/2024-01-01/2026-12-31">/average/2024-01-01/2026-12-31</a>
+            </p>
+        </section>
+
+        <section class="users">
+            <h2>Stored users</h2>
+            {% if users %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.role or "—" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="empty">No users stored yet.</p>
+            {% endif %}
+        </section>
+
+        <section class="users">
+            <h2>Current impact events (fireballs)</h2>
+            {% if fireballs %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time (UTC)</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Energy (kt)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for event in fireballs %}
+                    <tr>
+                        <td>{{ event.occurred_at.strftime("%Y-%m-%d %H:%M") }}</td>
+                        <td>{{ "%.1f"|format(event.latitude) if event.latitude is not none else "—" }}</td>
+                        <td>{{ "%.1f"|format(event.longitude) if event.longitude is not none else "—" }}</td>
+                        <td>{{ event.impact_energy_kt }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="empty">No fireballs stored yet. Run <code>python -m src.collector</code>.</p>
+            {% endif %}
+        </section>
+
+        <section class="users">
+            <h2>Future impact risk (Sentry)</h2>
+            {% if sentry_objects %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Designation</th>
+                        <th>Probability</th>
+                        <th>Palermo</th>
+                        <th>Years</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for obj in sentry_objects %}
+                    <tr>
+                        <td>{{ obj.designation }}</td>
+                        <td>{{ obj.impact_probability }}</td>
+                        <td>{{ obj.palermo_scale }}</td>
+                        <td>{{ obj.year_range or "—" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="empty">No Sentry objects stored yet. Run <code>python -m src.collector</code>.</p>
+            {% endif %}
+        </section>
     </main>
 </body>
 </html>
